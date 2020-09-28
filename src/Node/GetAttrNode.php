@@ -135,7 +135,7 @@ class GetAttrNode extends GetAttrExpression
         //   https://github.com/twigphp/Twig/pull/1863
         //
         //   https://github.com/twigphp/Twig/issues/2878
-        if (Template::METHOD_CALL !== $type and $object instanceof ArrayAccess) {
+        if (Template::METHOD_CALL !== $type and $object instanceof ArrayAccess and !is_a($object, 'Illuminate\Support\Collection')) {
             // We can't easily find out if an attribute actually exists, so return true
             if ($isDefinedTest) {
                 return true;
